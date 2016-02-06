@@ -1,0 +1,11 @@
+apache-drupl:
+  image: espressodev/apache-drupal
+  container_name: apache-drupal
+  ports:
+   - "8008:80"
+  volumes:
+   - /var/www/drupal
+   - /var/private-files
+  environment:
+    VIRTUAL_HOST: drupal.loc
+  hostname: drupal.loc
