@@ -5,7 +5,7 @@ apache-drupl:
    - "8008:80"
   volumes:
    - /var/www/drupal
-   - /var/private-files
+   - /var/files
   environment:
     VIRTUAL_HOST: drupal.loc
   hostname: drupal.loc

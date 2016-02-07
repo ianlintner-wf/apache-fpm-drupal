@@ -37,7 +37,7 @@ RUN ln -s /root/.composer/vendor/drush/drush/drush /usr/local/bin/drush
 
 
 VOLUME ["/var/www/drupal"]
-VOLUME ["/var/files-private"]
+VOLUME ["/var/files"]
 
 RUN mkdir -p /var/log/supervisor
 
@@ -50,10 +50,7 @@ RUN sed -i "s/listen =.*/listen = 127.0.0.1:9000/" /etc/php5/fpm/pool.d/www.conf
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh && chgrp -Rv www-data /var/private-files && chown -R www-data:www-data /var/www
-
-VOLUME ["/var/private-files"]
-RUN
+RUN chmod +x /usr/local/bin/run.sh && chgrp -Rv www-data /var/files && chown -R www-data:www-data /var/www
 
 EXPOSE 80
 CMD ["/usr/local/bin/run.sh"]
