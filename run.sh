@@ -17,8 +17,9 @@ if [ ! -z ${GIT_REPO} ]; then
   fi
 else if [ ! -z ${SITE_INSTALL} ]; then
    if [ ! -f /var/www/drupal/docroot/index.php ]; then
-     cd /var/www/drupal
      drush dl drupal7 --destination=/var/www/drupal/docroot
+     cd /var/www/drupal/docroot
+     drush site-install standard --account-name=$DRUPAL_USER --account-pass=$DRUPAL_PASSWORD --db-url=mysql://$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST/$MYSQL_DATABASE
    fi
 fi
 

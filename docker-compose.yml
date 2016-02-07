@@ -1,5 +1,5 @@
-apache-drupl:
-  image: espressodev/apache-drupal
+apache-drupal:
+  image: espressodev/apache-fpm-drupal
   container_name: apache-drupal
   ports:
    - "8008:80"
@@ -8,4 +8,20 @@ apache-drupl:
    - /var/files
   environment:
     VIRTUAL_HOST: drupal.loc
+    DRUPAL_USER: admin
+    DRUPAL_PASSWORD: admin
+    MYSQL_USER: root
+    MYSQL_PASSWORD: drupal
+    MYSQL_DATABASE: drupal
+    MYSQL_HOST: mysql
+    SITE_INSTAL: true
   hostname: drupal.loc
+  links:
+   - mysql
+mysql:
+  image: mysql:5.5
+  environment:
+    MYSQL_ROOT_PASSWORD: drupal
+    MYSQL_DATABASE: drupal
+  ports:
+    - "3306"
