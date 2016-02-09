@@ -36,7 +36,7 @@ RUN /usr/local/bin/composer global require drush/drush:6.*
 RUN ln -s /root/.composer/vendor/drush/drush/drush /usr/local/bin/drush
 
 
-VOLUME ["/var/www/drupal"]
+VOLUME ["/var/www"]
 VOLUME ["/var/files"]
 
 RUN mkdir -p /var/log/supervisor
