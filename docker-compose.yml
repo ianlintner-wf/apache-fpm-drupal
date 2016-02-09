@@ -4,7 +4,7 @@ apache-drupal:
   ports:
    - "8008:80"
   volumes:
-   - /var/www/drupal
+   - /var/www
    - /var/files
   environment:
     VIRTUAL_HOST: drupal.loc
@@ -15,6 +15,8 @@ apache-drupal:
     MYSQL_DATABASE: drupal
     MYSQL_HOST: mysql
     SITE_INSTAL: true
+    PHP_MEMORY_LIMIT: 512M
+    PHP_POST_MAX_SIZE: 512M
   hostname: drupal.loc
   links:
    - mysql
